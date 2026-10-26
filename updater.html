@@ -1,9 +1,9 @@
 <!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Устройство обновления · You Contry</title><link rel="icon" href="data:,"><style>
 *{box-sizing:border-box}body{margin:0;background:#edf0e4;color:#254b3e;font:16px system-ui,sans-serif;padding:35px 18px}main{max-width:780px;margin:auto}.tag{font-size:12px;letter-spacing:2px;color:#64806c}h1{font:clamp(32px,7vw,55px) Georgia,serif;margin:16px 0}p{line-height:1.65}section{background:#fffdf6;border:1px solid #dbe3d2;border-radius:22px;padding:25px;margin:18px 0;box-shadow:0 9px 35px #385a3710}.steps{display:flex;gap:8px;flex-wrap:wrap;font-size:13px}.steps span{padding:8px 13px;border-radius:20px;background:#dfe8d6}.buttons{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}button,a.button{font:600 15px system-ui;border:1px solid #b8cbb5;border-radius:12px;background:#e6eddf;color:#254b3e;padding:13px 18px;cursor:pointer;text-decoration:none}button.primary{background:#32684d;color:#fff;border-color:#32684d}button:disabled{opacity:.5;cursor:default}button:focus-visible,a:focus-visible{outline:3px solid #d99c4c;outline-offset:3px}.quiet{font-size:13px;color:#667d70}.notice{padding:14px;background:#f4e6cc;border-radius:12px;font-size:14px;line-height:1.6}#banner{background:#dbe9ce;border-color:#b1c79e}#banner h2{font-size:27px;margin:0 0 8px}#status{font-size:18px;font-weight:600}#changes{padding-left:23px;line-height:1.8}label{display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.5;margin:14px 0}input{width:19px;height:19px;flex-shrink:0}progress{width:100%;accent-color:#32684d;height:15px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f4ea;padding:14px;border-radius:12px;font:12px/1.6 system-ui}a{color:#32684d;overflow-wrap:anywhere}.hidden{display:none!important}.success{color:#236e45}footer{font-size:12px;line-height:1.7;color:#728376}#folderName{overflow-wrap:anywhere} @media(max-width:480px){body{padding:20px 12px}section{padding:19px}button,a.button{width:100%;text-align:center}h1{font-size:36px}}
-</style></head><body><main><div class="tag">YOU CONTRY, NEW COUNTRY / УСТРОЙСТВО ОБНОВЛЕНИЯ 1.1</div><h1>Новая глава<br>для твоей страны.</h1><div class="steps"><span>1. Выбери папку</span><span>2. Проверь обнову</span><span>3. Обновить!</span></div>
+</style></head><body><main><div class="tag">YOU CONTRY, NEW COUNTRY / УСТРОЙСТВО ОБНОВЛЕНИЯ 1.2</div><h1>Новая глава<br>для твоей страны.</h1><div class="steps"><span>1. Выбери папку</span><span>2. Проверь обнову</span><span>3. Обновить!</span></div>
 <section><strong id="folderName">Сначала выбери папку для игры</strong><p class="quiet">Создай отдельную папку «Моя страна». Здесь появится или обновится <b>index.html</b>. Другие HTML-файлы обновлялка не трогает. Разрешение нужно только на эту папку.</p><div class="buttons"><button id="pick">📁 Выбрать папку</button><button id="permit" class="hidden">Разрешить доступ снова</button><button id="check">Проверить обновления</button></div><p id="local" class="quiet">Установленная версия пока неизвестна.</p><div id="legacy" class="notice hidden">В этой папке пока нет отдельного файла мира. Если у тебя есть старый город, открой старую игру → ☰ → «Экспорт сохранения». Сохрани JSON в надёжное место. После установки импортируй его в новую игру и нажми там «📁 Папка».<label><input id="saveOkay" type="checkbox">Я сохранил старый мир в JSON или устанавливаю игру впервые.</label></div><label><input id="closed" type="checkbox">Я сохранил мир и закрыл вкладку с игрой.</label></section>
 <section aria-live="polite"><div id="status">Проверяю полочку…</div><p id="detail" class="quiet">Источник: только твой сайт. Кнопка обновления ничего не устанавливает без выбранной папки.</p><progress id="progress" class="hidden" max="100" value="0"></progress></section>
-<section id="banner" class="hidden"><h2>Доступно обновление</h2><p id="version"></p><ul id="changes"></ul><div class="buttons"><button class="primary" id="update" disabled>Обновить игру</button></div><p class="quiet">Сначала проверим скачанный файл и сделаем резервные копии. Сохранения/world.json не заменяется обновлением.</p></section>
+<section id="banner" class="hidden"><h2>Доступно обновление</h2><p id="version"></p><ul id="changes"></ul><div class="buttons"><button class="primary" id="update" disabled>Обновить игру</button><button id="localInstall" disabled>Выбрать HTML из архива</button><input id="localGame" type="file" accept=".html,text/html" class="hidden"></div><p class="quiet">Если сайт скачивается плохо, выбери index.html из распакованного комплекта нужной версии. Это не сохранение JSON. Проверка файла и резервные копии останутся такими же. Сначала проверим скачанный файл и сделаем резервные копии. Сохранения/world.json не заменяется обновлением.</p></section>
 <section id="done" class="hidden"><h2 class="success">Готово! Города дома 🏡</h2><p>Открой <b>index.html</b> в выбранной папке. В игре нажми «Продолжить из папки». При первом переносе старого мира импортируй его JSON через меню ☰.</p><p class="quiet">Не перепутай с игрой на сайте: установленная копия лежит на твоём компьютере.</p></section>
 <section><details><summary>Что происходит под капотом?</summary><pre id="log">Никаких паролей, аккаунтов и платежей внутри обновлялки.</pre></details><p class="quiet">Папка «Резервные копии» хранит старые версии игры и копии миров. Не удаляй её, пока не проверишь новую версию. Обновлялка не отправляет твои сохранения в интернет.</p><p class="quiet">Нет интернета? Уже установленная игра всё равно работает. Для записи файлов нужен Chrome или Edge на компьютере; браузер может снова попросить разрешение. «Пип» может прозвучать только после взаимодействия со страницей.</p></section>
 <footer>Адрес обновлений: <a href="https://misha251215-dot.github.io/you-country/" target="_blank" rel="noopener">misha251215-dot.github.io/you-country/</a><br>Не отключай защиту браузера и не запускай команды из случайных сообщений. Если что-то непонятно — попроси взрослого помочь.</footer></main><script>/* Shared folder helpers. No credentials, telemetry or external libraries. */
@@ -29,10 +29,41 @@ let dir=null,manifest=null,installed=null,saveExists=false,busy=false,permitted=
 function log(s){el('log').textContent+='\n'+new Date().toLocaleTimeString('ru-RU')+' — '+s}
 function state(s,detail=''){el('status').textContent=s;el('detail').textContent=detail;log(s)}
 function compareVersions(a,b){const x=a.split('.').map(Number),y=b.split('.').map(Number);for(let i=0;i<3;i++)if(x[i]!==y[i])return x[i]>y[i]?1:-1;return 0}
-function controls(){el('pick').disabled=busy;el('check').disabled=busy;el('permit').disabled=busy;el('update').disabled=busy||!dir||!permitted||!manifest||installed?.sha256===manifest.sha256||installed&&compareVersions(manifest.version,installed.version)<0||!el('closed').checked||(!saveExists&&!el('saveOkay').checked)}
+function controls(){el('pick').disabled=busy;el('check').disabled=busy;el('permit').disabled=busy;el('update').disabled=busy||!dir||!permitted||!manifest||installed?.sha256===manifest.sha256||installed&&compareVersions(manifest.version,installed.version)<0||!el('closed').checked||(!saveExists&&!el('saveOkay').checked);if(el('localInstall'))el('localInstall').disabled=el('update').disabled}
 function beep(){if(!hasGesture)return;try{const A=window.AudioContext||window.webkitAudioContext,a=new A();a.resume();const o=a.createOscillator(),g=a.createGain();o.type='sine';o.frequency.setValueAtTime(880,a.currentTime);o.frequency.setValueAtTime(1175,a.currentTime+.12);g.gain.setValueAtTime(.06,a.currentTime);g.gain.exponentialRampToValueAtTime(.001,a.currentTime+.3);o.connect(g);g.connect(a.destination);o.start();o.stop(a.currentTime+.32);o.onended=()=>a.close()}catch{}}
 document.addEventListener('pointerdown',()=>{hasGesture=true},{once:true});
-async function network(url){const controller=new AbortController(),t=setTimeout(()=>controller.abort(),20000);try{const r=await fetch(url,{cache:'no-store',credentials:'omit',signal:controller.signal,redirect:'error'});if(!r.ok)throw Error('Сайт ответил '+r.status);return await r.arrayBuffer()}finally{clearTimeout(t)}}
+// Streaming download: pause timeout resets on actual data, plus a generous overall limit.
+async function network(url,{expectedBytes=0,onProgress=null}={}){
+ const large=expectedBytes>0,maxBytes=large?expectedBytes:100000,idleMs=large?90000:30000,totalMs=large?600000:60000;
+ for(let attempt=1;attempt<=2;attempt++){
+  const controller=new AbortController();let idleTimer,totalTimer,reader=null,timeoutKind='';
+  function abort(kind){timeoutKind=kind;controller.abort()}
+  function resetIdle(){clearTimeout(idleTimer);idleTimer=setTimeout(()=>abort('idle'),idleMs)}
+  try{
+   resetIdle();totalTimer=setTimeout(()=>abort('total'),totalMs);onProgress?.(0,expectedBytes,attempt);
+   const response=await fetch(url,{cache:'no-store',credentials:'omit',signal:controller.signal,redirect:'error'});
+   if(!response.ok){const e=Error('Сайт ответил '+response.status+'.');e.retryable=[408,429].includes(response.status)||response.status>=500;throw e}
+   const chunks=[];let size=0;
+   if(response.body){
+    reader=response.body.getReader();
+    for(;;){const {done,value}=await reader.read();if(done)break;if(value?.byteLength){size+=value.byteLength;if(size>maxBytes)throw Error('Проверка размера файла не прошла: сайт прислал слишком много данных. Игра не изменена.');chunks.push(value);resetIdle();onProgress?.(size,expectedBytes,attempt)}}
+   }else{
+    const bytes=await response.arrayBuffer();size=bytes.byteLength;if(size>maxBytes)throw Error('Проверка размера файла не прошла. Игра не изменена.');chunks.push(new Uint8Array(bytes));onProgress?.(size,expectedBytes,attempt);
+   }
+   if(expectedBytes&&size!==expectedBytes){const e=Error('Проверка скачанного файла не прошла: файл пришёл не целиком. Игра не изменена.');e.retryable=true;throw e}
+   const bytes=new Uint8Array(size);let offset=0;for(const chunk of chunks){bytes.set(chunk,offset);offset+=chunk.byteLength}return bytes.buffer;
+  }catch(original){
+   reader?.cancel().catch(()=>{});
+   let e=original;
+   if(controller.signal.aborted){e=Error(timeoutKind==='total'?'Скачивание не завершилось за 10 минут. Попробуй выбрать готовый HTML из архива.':'Сайт долго не присылал данные. Можно выбрать готовый HTML из архива вместо скачивания.');if(!large)e.message='Сайт слишком долго не отвечает. Проверь интернет и попробуй проверить обновления позже.';e.retryable=true}
+   else if(e instanceof TypeError){e=Error('Не удалось связаться с сайтом. Проверь интернет или выбери готовый HTML из архива.');e.retryable=true}
+   clearTimeout(idleTimer);clearTimeout(totalTimer);
+   if(e.retryable&&attempt<2){log('Связь прервалась. Повторяю загрузку один раз.');if(large)el('detail').textContent='Связь прервалась. Начинаю вторую попытку…';await new Promise(resolve=>setTimeout(resolve,1200));continue}
+   throw e;
+  }finally{clearTimeout(idleTimer);clearTimeout(totalTimer);try{reader?.releaseLock()}catch{}}
+ }
+}
+
 function parseManifest(bytes){if(bytes.byteLength>100000)throw Error('Слишком большой список обновлений.');const m=JSON.parse(new TextDecoder().decode(bytes));if(m.product!=='you-contry-new-country'||m.manifestVersion!==1||!/^\d+\.\d+\.\d+$/.test(m.version)||m.file!=='index.html'||!Number.isSafeInteger(m.bytes)||m.bytes<1000||m.bytes>50000000||!/^[a-f0-9]{64}$/.test(m.sha256)||m.saveFormat!==1||!Array.isArray(m.changes)||m.changes.length>20||m.changes.some(c=>typeof c!=='string'||c.length>500))throw Error('Список обновлений не подходит этой игре. Ничего не изменено.');return m}
 async function inspectFolder(){
  installed=null;saveExists=false;
@@ -59,7 +90,7 @@ function showRelease(){
 }
 async function check(){if(busy)return;busy=true;controls();state('Проверяю полочку…','Скачиваю только маленький список версий.');try{manifest=parseManifest(await network(SITE+'version.json?t='+Date.now()));showRelease();if(installed?.sha256!==manifest.sha256)beep()}catch(e){manifest=null;el('banner').classList.add('hidden');state('Пока не удалось проверить обновления', 'Если файлы ещё не загружены на сайт — это нормально. Иначе проверь интернет и нажми «Проверить обновления». '+e.message)}finally{busy=false;controls()}}
 async function validateSave(file){if(!file)return;if(file.size>30000000)throw Error('Сохранение слишком большое. Обновление отменено.');let value;try{value=JSON.parse(await file.text())}catch{throw Error('Сохранение повреждено: обновление отменено. Сначала восстанови JSON из резервной копии.')}if(value.version!==manifest.saveFormat||!value.cities||!value.cities.home||!Array.isArray(value.worldStrokes))throw Error('Эта версия не умеет читать найденное сохранение. Игра не изменена.')}
-async function install(){
+async function install(localFile=null){
  if(el('update').disabled)return;
  busy=true;controls();el('progress').classList.remove('hidden');el('progress').value=5;
  let old=null,targetChanged=false,created=false;
@@ -69,7 +100,16 @@ async function install(){
   old=await YCFiles.read(dir,'index.html');
   if(old){const text=await old.slice(0,200000).text();if(!text.includes('You Contry, New Country')&&!text.includes('you-contry-new-country'))throw Error('В папке лежит чужой index.html. Я его не трону. Выбери отдельную папку для игры.')}
   state('Скачиваю новую версию…','Файл игры: примерно '+(manifest.bytes/1000000).toFixed(1)+' МБ. Сохранения не отправляются на сайт.');
-  const bytes=await network(SITE+manifest.file+'?release='+manifest.sha256);
+  let bytes;
+  if(localFile){
+   if(localFile.size!==manifest.bytes)throw Error('Выбран не тот файл игры. Нужен index.html из распакованного комплекта версии '+manifest.version+'. Сохранение JSON выбирать не нужно.');
+   state('Проверяю выбранный HTML…','Файл не отправляется на сайт. Проверяю его размер и контрольную сумму.');bytes=await localFile.arrayBuffer();
+  }else{
+   bytes=await network(SITE+manifest.file+'?release='+manifest.sha256,{expectedBytes:manifest.bytes,onProgress:(loaded,total,attempt)=>{
+    el('progress').value=5+40*loaded/total;
+    el('detail').textContent='Скачано '+(loaded/1000000).toFixed(2)+' из '+(total/1000000).toFixed(2)+' МБ'+(attempt>1?' · попытка 2 из 2':'')+'. Пока данные приходят, загрузка продолжается — обрыва через 20 секунд больше нет.';
+   }});
+  }
   el('progress').value=45;
   if(bytes.byteLength!==manifest.bytes||await YCFiles.sha(bytes)!==manifest.sha256)throw Error('Проверка скачанного файла не прошла. Старую игру не трогали. Попробуй позже.');
   const html=new TextDecoder().decode(bytes);if(!html.includes('name="you-country-product" content="you-contry-new-country"')||!html.includes('name="you-country-version" content="'+manifest.version+'"'))throw Error('Скачанный файл не похож на нужную версию игры.');
@@ -89,7 +129,7 @@ async function install(){
   state('Обновление остановлено',e.message+recovery+' Сохранение мира обновлялка не переписывает.');
  }finally{busy=false;controls()}
 }
-el('pick').onclick=choose;el('check').onclick=check;el('update').onclick=install;el('closed').onchange=controls;el('saveOkay').onchange=controls;
+el('pick').onclick=choose;el('check').onclick=check;el('update').onclick=()=>install();el('localInstall').onclick=()=>el('localGame').click();el('localGame').onchange=async e=>{const file=e.target.files[0];if(!file)return;try{await install(file)}finally{e.target.value=''}};el('closed').onchange=controls;el('saveOkay').onchange=controls;
 el('permit').onclick=async()=>{try{if(await YCFiles.permission(dir,true)){await inspectFolder();showRelease()}else state('Разрешение не выдано','Без него файлы не меняются.')}catch(e){state('Не удалось открыть папку',e.message)}controls()};
 (async()=>{dir=await YCFiles.remembered();if(dir)try{await inspectFolder()}catch(e){log('Выбери папку снова: '+e.message);dir=null}await check()})();
 </script></body></html>
