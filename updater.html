@@ -1,0 +1,95 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Мега-омега обновлялка · You Contry</title><link rel="icon" href="data:,"><style>
+*{box-sizing:border-box}body{margin:0;background:#edf0e4;color:#254b3e;font:16px system-ui,sans-serif;padding:35px 18px}main{max-width:780px;margin:auto}.tag{font-size:12px;letter-spacing:2px;color:#64806c}h1{font:clamp(32px,7vw,55px) Georgia,serif;margin:16px 0}p{line-height:1.65}section{background:#fffdf6;border:1px solid #dbe3d2;border-radius:22px;padding:25px;margin:18px 0;box-shadow:0 9px 35px #385a3710}.steps{display:flex;gap:8px;flex-wrap:wrap;font-size:13px}.steps span{padding:8px 13px;border-radius:20px;background:#dfe8d6}.buttons{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}button,a.button{font:600 15px system-ui;border:1px solid #b8cbb5;border-radius:12px;background:#e6eddf;color:#254b3e;padding:13px 18px;cursor:pointer;text-decoration:none}button.primary{background:#32684d;color:#fff;border-color:#32684d}button:disabled{opacity:.5;cursor:default}button:focus-visible,a:focus-visible{outline:3px solid #d99c4c;outline-offset:3px}.quiet{font-size:13px;color:#667d70}.notice{padding:14px;background:#f4e6cc;border-radius:12px;font-size:14px;line-height:1.6}#banner{background:#dbe9ce;border-color:#b1c79e}#banner h2{font-size:27px;margin:0 0 8px}#status{font-size:18px;font-weight:600}#changes{padding-left:23px;line-height:1.8}label{display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.5;margin:14px 0}input{width:19px;height:19px;flex-shrink:0}progress{width:100%;accent-color:#32684d;height:15px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f1f4ea;padding:14px;border-radius:12px;font:12px/1.6 system-ui}a{color:#32684d;overflow-wrap:anywhere}.hidden{display:none!important}.success{color:#236e45}footer{font-size:12px;line-height:1.7;color:#728376}#folderName{overflow-wrap:anywhere} @media(max-width:480px){body{padding:20px 12px}section{padding:19px}button,a.button{width:100%;text-align:center}h1{font-size:36px}}
+</style></head><body><main><div class="tag">YOU CONTRY, NEW COUNTRY / ОБНОВЛЯЛКА 1.0</div><h1>Обновы прилетают.<br>Города остаются.</h1><div class="steps"><span>1. Выбери папку</span><span>2. Проверь обнову</span><span>3. Обновить!</span></div>
+<section><strong id="folderName">Сначала выбери папку для игры</strong><p class="quiet">Создай отдельную папку «Моя страна». Здесь появится или обновится <b>index.html</b>. Другие HTML-файлы обновлялка не трогает. Разрешение нужно только на эту папку.</p><div class="buttons"><button id="pick">📁 Выбрать папку</button><button id="permit" class="hidden">Разрешить доступ снова</button><button id="check">Проверить обновления</button></div><p id="local" class="quiet">Установленная версия пока неизвестна.</p><div id="legacy" class="notice hidden">В этой папке пока нет отдельного файла мира. Если у тебя есть старый город, открой старую игру → ☰ → «Экспорт сохранения». Сохрани JSON в надёжное место. После установки импортируй его в новую игру и нажми там «📁 Папка».<label><input id="saveOkay" type="checkbox">Я сохранил старый мир в JSON или устанавливаю игру впервые.</label></div><label><input id="closed" type="checkbox">Я сохранил мир и закрыл вкладку с игрой.</label></section>
+<section aria-live="polite"><div id="status">Проверяю полочку…</div><p id="detail" class="quiet">Источник: только твой сайт. Кнопка обновления ничего не устанавливает без выбранной папки.</p><progress id="progress" class="hidden" max="100" value="0"></progress></section>
+<section id="banner" class="hidden"><h2>ПИП! МЕГА-ОМЕГА ОБНОВА! 🚀</h2><p id="version"></p><ul id="changes"></ul><div class="buttons"><button class="primary" id="update" disabled>Обновить</button></div><p class="quiet">Сначала проверим скачанный файл и сделаем резервные копии. Сохранения/world.json не заменяется обновлением.</p></section>
+<section id="done" class="hidden"><h2 class="success">Готово! Города дома 🏡</h2><p>Открой <b>index.html</b> в выбранной папке. В игре нажми «Продолжить из папки». При первом переносе старого мира импортируй его JSON через меню ☰.</p><p class="quiet">Не перепутай с игрой на сайте: установленная копия лежит на твоём компьютере.</p></section>
+<section><details><summary>Что происходит под капотом?</summary><pre id="log">Никаких паролей, аккаунтов и платежей внутри обновлялки.</pre></details><p class="quiet">Папка «Резервные копии» хранит старые версии игры и копии миров. Не удаляй её, пока не проверишь новую версию. Обновлялка не отправляет твои сохранения в интернет.</p><p class="quiet">Нет интернета? Уже установленная игра всё равно работает. Для записи файлов нужен Chrome или Edge на компьютере; браузер может снова попросить разрешение. «Пип» может прозвучать только после взаимодействия со страницей.</p></section>
+<footer>Адрес обновлений: <a href="https://misha251215-dot.github.io/you-country/" target="_blank" rel="noopener">misha251215-dot.github.io/you-country/</a><br>Не отключай защиту браузера и не запускай команды из случайных сообщений. Если что-то непонятно — попроси взрослого помочь.</footer></main><script>/* Shared folder helpers. No credentials, telemetry or external libraries. */
+const YCFiles = (() => {
+ const DB='you-country-folder-v1', STORE='handles';
+ function db(){return new Promise((resolve,reject)=>{const r=indexedDB.open(DB,1);r.onupgradeneeded=()=>r.result.createObjectStore(STORE);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
+ async function remembered(){let d;try{d=await db();return await new Promise((resolve,reject)=>{const r=d.transaction(STORE).objectStore(STORE).get('folder');r.onsuccess=()=>resolve(r.result||null);r.onerror=()=>reject(r.error)})}catch{return null}finally{d?.close()}}
+ async function remember(handle){let d;try{d=await db();await new Promise((resolve,reject)=>{const t=d.transaction(STORE,'readwrite');t.objectStore(STORE).put(handle,'folder');t.oncomplete=resolve;t.onerror=()=>reject(t.error)})}catch{/* Browsers may disallow persisting a handle. Picking again remains available. */}finally{d?.close()}}
+ async function permission(handle,ask=false){const opts={mode:'readwrite'};return await handle.queryPermission(opts)==='granted'||ask&&await handle.requestPermission(opts)==='granted'}
+ async function pick(){if(!window.showDirectoryPicker)throw Error('Нужен Chrome или Edge на компьютере. Открой эту страницу в отдельной вкладке, не внутри предпросмотра.');return await window.showDirectoryPicker({id:'you-country-folder',mode:'readwrite'})}
+ async function read(dir,name){try{return await (await dir.getFileHandle(name)).getFile()}catch(e){if(e.name==='NotFoundError')return null;throw e}}
+ async function write(dir,name,value){const h=await dir.getFileHandle(name,{create:true}),w=await h.createWritable();try{await w.write(value);await w.close()}catch(e){try{await w.abort()}catch{}throw e}}
+ async function sha(bytes){return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),v=>v.toString(16).padStart(2,'0')).join('')}
+ function stamp(){return new Date().toISOString().replace(/[:.]/g,'-')+'-'+Math.random().toString(36).slice(2,6)}
+ async function backups(dir){return await dir.getDirectoryHandle('Резервные копии',{create:true})}
+ async function saves(dir,create=false){try{return await dir.getDirectoryHandle('Сохранения',{create})}catch(e){if(e.name==='NotFoundError')return null;throw e}}
+ return {remembered,remember,permission,pick,read,write,sha,stamp,backups,saves};
+})();
+</script><script>'use strict';
+const SITE='https://misha251215-dot.github.io/you-country/';
+const el=id=>document.getElementById(id);
+let dir=null,manifest=null,installed=null,saveExists=false,busy=false,permitted=false,hasGesture=false;
+function log(s){el('log').textContent+='\n'+new Date().toLocaleTimeString('ru-RU')+' — '+s}
+function state(s,detail=''){el('status').textContent=s;el('detail').textContent=detail;log(s)}
+function compareVersions(a,b){const x=a.split('.').map(Number),y=b.split('.').map(Number);for(let i=0;i<3;i++)if(x[i]!==y[i])return x[i]>y[i]?1:-1;return 0}
+function controls(){el('pick').disabled=busy;el('check').disabled=busy;el('permit').disabled=busy;el('update').disabled=busy||!dir||!permitted||!manifest||installed?.sha256===manifest.sha256||installed&&compareVersions(manifest.version,installed.version)<0||!el('closed').checked||(!saveExists&&!el('saveOkay').checked)}
+function beep(){if(!hasGesture)return;try{const A=window.AudioContext||window.webkitAudioContext,a=new A();a.resume();const o=a.createOscillator(),g=a.createGain();o.type='sine';o.frequency.setValueAtTime(880,a.currentTime);o.frequency.setValueAtTime(1175,a.currentTime+.12);g.gain.setValueAtTime(.06,a.currentTime);g.gain.exponentialRampToValueAtTime(.001,a.currentTime+.3);o.connect(g);g.connect(a.destination);o.start();o.stop(a.currentTime+.32);o.onended=()=>a.close()}catch{}}
+document.addEventListener('pointerdown',()=>{hasGesture=true},{once:true});
+async function network(url){const controller=new AbortController(),t=setTimeout(()=>controller.abort(),20000);try{const r=await fetch(url,{cache:'no-store',credentials:'omit',signal:controller.signal,redirect:'error'});if(!r.ok)throw Error('Сайт ответил '+r.status);return await r.arrayBuffer()}finally{clearTimeout(t)}}
+function parseManifest(bytes){if(bytes.byteLength>100000)throw Error('Слишком большой список обновлений.');const m=JSON.parse(new TextDecoder().decode(bytes));if(m.product!=='you-contry-new-country'||m.manifestVersion!==1||!/^\d+\.\d+\.\d+$/.test(m.version)||m.file!=='index.html'||!Number.isSafeInteger(m.bytes)||m.bytes<1000||m.bytes>50000000||!/^[a-f0-9]{64}$/.test(m.sha256)||m.saveFormat!==1||!Array.isArray(m.changes)||m.changes.length>20||m.changes.some(c=>typeof c!=='string'||c.length>500))throw Error('Список обновлений не подходит этой игре. Ничего не изменено.');return m}
+async function inspectFolder(){
+ installed=null;saveExists=false;
+ if(!dir)return;
+ permitted=await YCFiles.permission(dir);
+ el('folderName').textContent='📁 '+dir.name;el('permit').classList.toggle('hidden',permitted);
+ if(!permitted){el('local').textContent='Папка запомнена, но нужно снова разрешить доступ.';controls();return}
+ const file=await YCFiles.read(dir,'you-country-installed.json');
+ if(file){try{const value=JSON.parse(await file.text());if(value.product==='you-contry-new-country'&&/^\d+\.\d+\.\d+$/.test(value.version)&&/^[a-f0-9]{64}$/.test(value.sha256))installed=value}catch{log('Не удалось прочитать номер старой версии. Проверим сам игровой файл при установке.')}}
+ if(installed){const game=await YCFiles.read(dir,'index.html');if(!game||await YCFiles.sha(await game.arrayBuffer())!==installed.sha256){installed=null;log('Файл игры отличается от записи версии. Можно восстановить его обновлением.')}}
+ const saves=await YCFiles.saves(dir),save=saves&&await YCFiles.read(saves,'world.json');saveExists=!!save;
+ el('legacy').classList.toggle('hidden',saveExists);el('saveOkay').checked=false;
+ el('local').textContent=(installed?'Версия в папке: '+installed.version:'В этой папке ещё нет подтверждённой установки.')+(saveExists?' Отдельный файл мира найден.':'');
+ controls();
+}
+async function choose(){try{dir=await YCFiles.pick();permitted=await YCFiles.permission(dir,true);await YCFiles.remember(dir);await inspectFolder();showRelease()}catch(e){if(e.name!=='AbortError')state('Папка не подключена',e.message)}controls()}
+function showRelease(){
+ if(!manifest)return;
+ const same=installed?.sha256===manifest.sha256;
+ if(installed&&compareVersions(manifest.version,installed.version)<0){el('banner').classList.add('hidden');state('На компьютере версия новее, чем на сайте','Старую версию поверх новой устанавливать не буду.');controls();return}
+ el('banner').classList.toggle('hidden',same);el('done').classList.add('hidden');
+ el('version').textContent='Версия '+manifest.version;el('changes').replaceChildren(...manifest.changes.map(text=>{const li=document.createElement('li');li.textContent=text;return li}));
+ if(same)state('У тебя уже свежая версия ✨','Ничего заменять не нужно.');else state('ПИП! Есть готовая версия '+manifest.version,'Выбери папку, сохрани и закрой игру, затем нажми «Обновить».');controls();
+}
+async function check(){if(busy)return;busy=true;controls();state('Проверяю полочку…','Скачиваю только маленький список версий.');try{manifest=parseManifest(await network(SITE+'version.json?t='+Date.now()));showRelease();if(installed?.sha256!==manifest.sha256)beep()}catch(e){manifest=null;el('banner').classList.add('hidden');state('Пока не удалось проверить обновления', 'Если файлы ещё не загружены на сайт — это нормально. Иначе проверь интернет и нажми «Проверить обновления». '+e.message)}finally{busy=false;controls()}}
+async function validateSave(file){if(!file)return;if(file.size>30000000)throw Error('Сохранение слишком большое. Обновление отменено.');let value;try{value=JSON.parse(await file.text())}catch{throw Error('Сохранение повреждено: обновление отменено. Сначала восстанови JSON из резервной копии.')}if(value.version!==manifest.saveFormat||!value.cities||!value.cities.home||!Array.isArray(value.worldStrokes))throw Error('Эта версия не умеет читать найденное сохранение. Игра не изменена.')}
+async function install(){
+ if(el('update').disabled)return;
+ busy=true;controls();el('progress').classList.remove('hidden');el('progress').value=5;
+ let old=null,targetChanged=false,created=false;
+ try{
+  if(!await YCFiles.permission(dir,true))throw Error('Доступ к папке не разрешён.');
+  const saves=await YCFiles.saves(dir),save=saves&&await YCFiles.read(saves,'world.json');await validateSave(save);
+  old=await YCFiles.read(dir,'index.html');
+  if(old){const text=await old.slice(0,200000).text();if(!text.includes('You Contry, New Country')&&!text.includes('you-contry-new-country'))throw Error('В папке лежит чужой index.html. Я его не трону. Выбери отдельную папку для игры.')}
+  state('Скачиваю мега-обнову…','Файл игры: примерно '+(manifest.bytes/1000000).toFixed(1)+' МБ. Сохранения не отправляются на сайт.');
+  const bytes=await network(SITE+manifest.file+'?release='+manifest.sha256);
+  el('progress').value=45;
+  if(bytes.byteLength!==manifest.bytes||await YCFiles.sha(bytes)!==manifest.sha256)throw Error('Проверка скачанного файла не прошла. Старую игру не трогали. Попробуй позже.');
+  const html=new TextDecoder().decode(bytes);if(!html.includes('name="you-country-product" content="you-contry-new-country"')||!html.includes('name="you-country-version" content="'+manifest.version+'"'))throw Error('Скачанный файл не похож на нужную версию игры.');
+  const backups=await YCFiles.backups(dir),stamp=YCFiles.stamp();
+  if(old){await YCFiles.write(backups,'game-'+stamp+'.html',old);log('Старая игра сохранена в «Резервные копии».')}
+  if(save){await YCFiles.write(backups,'world-before-update-'+stamp+'.json',save);log('Мир скопирован в «Резервные копии». Основной файл мира не изменён.')}
+  el('progress').value=65;state('Устанавливаю…','Резервные копии готовы. Не закрывай эту вкладку до завершения.');
+  // createWritable closes atomically in supporting Chromium browsers.
+  targetChanged=true;created=!old;await YCFiles.write(dir,'index.html',new Blob([bytes],{type:'text/html'}));
+  const saved=await YCFiles.read(dir,'index.html');if(!saved||await YCFiles.sha(await saved.arrayBuffer())!==manifest.sha256)throw Error('Проверка записанной игры не прошла.');
+  const record={product:manifest.product,version:manifest.version,sha256:manifest.sha256,saveFormat:manifest.saveFormat,installedAt:new Date().toISOString()};
+  await YCFiles.write(dir,'you-country-installed.json',JSON.stringify(record,null,2));installed=record;
+  el('progress').value=100;el('banner').classList.add('hidden');el('done').classList.remove('hidden');state('Готово! Обновление '+manifest.version+' установлено.','Открой index.html именно в выбранной папке. Файл сохранения остался на месте.');
+ }catch(e){
+  let recovery='';
+  if(targetChanged){try{if(old)await YCFiles.write(dir,'index.html',old);else if(created)await dir.removeEntry('index.html');recovery=' Предыдущая игра восстановлена.'}catch{recovery=' Автовосстановление не удалось. Верни старый HTML из «Резервные копии»: переименуй копию игры в index.html.'}}
+  state('Обновление остановлено',e.message+recovery+' Сохранение мира обновлялка не переписывает.');
+ }finally{busy=false;controls()}
+}
+el('pick').onclick=choose;el('check').onclick=check;el('update').onclick=install;el('closed').onchange=controls;el('saveOkay').onchange=controls;
+el('permit').onclick=async()=>{try{if(await YCFiles.permission(dir,true)){await inspectFolder();showRelease()}else state('Разрешение не выдано','Без него файлы не меняются.')}catch(e){state('Не удалось открыть папку',e.message)}controls()};
+(async()=>{dir=await YCFiles.remembered();if(dir)try{await inspectFolder()}catch(e){log('Выбери папку снова: '+e.message);dir=null}await check()})();
+</script></body></html>
