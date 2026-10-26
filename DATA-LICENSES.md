@@ -57,3 +57,7 @@ No external runtime library, web font, audio or image asset is required.
 Building selection icons use Unicode emoji rendered by the user's operating
 system; no separate emoji image collection is redistributed. Playwright is
 a development-only test dependency, not bundled into the standalone game.
+
+
+## Version 1.2: Bezhitsa public district extract
+OpenStreetMap via Overpass, retrieved 2026-10-26. Broad rectangular coverage around Bezhitsa, approximately 7.9 x 7.7 km; not the administrative district boundary. 12,094 compiled building footprints and 3,657 road/path segments. Address tags were removed during acquisition. No player residence is marked. Additional geographic data and derived database remain ODbL 1.0.
