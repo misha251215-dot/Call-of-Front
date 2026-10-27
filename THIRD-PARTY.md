@@ -50,3 +50,6 @@ clearance or guarantee of absence of legal claims is provided.
 
 ## Historical equipment names
 Historical names are used to identify equipment in an original fictional game. All weapon and uniform meshes in version 0.2.0 are simple original procedural interpretations; no Call of Duty models, sounds, textures, icons, or UI code were imported. No claim of museum-level accuracy, affiliation, trademark clearance, or endorsement is made.
+
+## Audio added in 0.2.1
+The three short instrumental pieces (Quarter, Mist, Dawn) are original procedural synthesizer compositions created for this project with make-music.py, with no third-party recordings or game-score samples. The six Russian soldier callouts were generated with a user-selected synthetic voice, not extracted from any game or actor recording. Gunshots, footsteps and explosions are procedural Web Audio effects. No Call of Duty music, dialogue, or sound recordings are included. Audio is embedded locally and makes no runtime network or microphone requests.
