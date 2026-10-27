@@ -47,3 +47,6 @@ recordings, maps, logos, weapon model files or character assets are extracted
 from Call of Duty or another commercial game. Call on Front is not affiliated
 with Activision or Call of Duty. Its title is a working title; no trademark
 clearance or guarantee of absence of legal claims is provided.
+
+## Historical equipment names
+Historical names are used to identify equipment in an original fictional game. All weapon and uniform meshes in version 0.2.0 are simple original procedural interpretations; no Call of Duty models, sounds, textures, icons, or UI code were imported. No claim of museum-level accuracy, affiliation, trademark clearance, or endorsement is made.
