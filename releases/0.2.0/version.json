@@ -1,0 +1,14 @@
+{
+  "manifestVersion": 1,
+  "product": "call-on-front",
+  "version": "0.2.0",
+  "saveFormat": 1,
+  "file": "releases/0.2.0/index.html",
+  "bytes": 1043804,
+  "sha256": "25b6180ca1a00b1e9b8a62c4bac6e9396765d26241c5fa0709b7c12e0cd21b7d",
+  "changes": [
+    "Историческая сохранённая сборка 0.2.0.",
+    "16 видов оружия, четыре стороны, два слота, нож и гранаты.",
+    "Без музыкального патча 0.2.1."
+  ]
+}
